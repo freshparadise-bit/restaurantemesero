@@ -2319,18 +2319,7 @@
       <h2 style="font-size: 1.5rem; color: #0f172a; margin-bottom: 0.25rem;">Fresh Paradise • Cocles</h2>
       <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1.15rem;">Sistema de Pedidos & Punto de Venta</p>
 
-      <!-- Credenciales Disponibles para Ingreso Rápido -->
-      <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 14px; padding: 0.75rem 0.95rem; margin-bottom: 1.15rem; font-size: 0.82rem; text-align: left;">
-        <div style="font-weight: 800; color: #15803d; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
-          <span>🌴</span> Acceso del Personal:
-        </div>
-        <div style="color: #374151; line-height: 1.5;">
-          • <strong>Mesero:</strong> <code style="background: white; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #15803d;">mesero</code> &bull; Clave: <code style="background: white; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #15803d;">123</code><br>
-          • <strong>Admin:</strong> <code style="background: white; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #0369a1;">admin</code> &bull; Clave: <code style="background: white; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #0369a1;">987654</code>
-        </div>
-      </div>
-
-      <!-- Barra de Estado Conectado (Si ya hay URL configurada) -->
+            <!-- Barra de Estado Conectado (Si ya hay URL configurada) -->
       <div id="connectedSheetsBox" style="display: none; margin-bottom: 1.15rem; justify-content: space-between; align-items: center; background: #f0fdf4; padding: 0.5rem 0.85rem; border-radius: 12px; border: 1px solid #86efac;">
         <span style="font-size: 0.78rem; font-weight: 700; color: #15803d; display: flex; align-items: center; gap: 0.35rem;">
           <span class="sheets-dot"></span> Sheets Conectado
@@ -4706,7 +4695,7 @@
         );
 
         if (!user) {
-          errDiv.innerText = '❌ Usuario o contraseña incorrectos. Pruebe con mesero (clave: 123) o admin (clave: 987654).';
+          errDiv.innerText = '❌ Usuario o contraseña incorrectos.';
           errDiv.style.display = 'block';
           return;
         }
