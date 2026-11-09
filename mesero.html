@@ -2317,39 +2317,48 @@
         <img src="logo_fresh_paradise.jpg" alt="Logo Fresh Paradise Cocles">
       </div>
       <h2 style="font-size: 1.5rem; color: #0f172a; margin-bottom: 0.25rem;">Fresh Paradise • Cocles</h2>
-      <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1.25rem;">Sistema de Pedidos & Punto de Venta</p>
+      <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1.15rem;">Sistema de Pedidos & Punto de Venta</p>
 
-      <!-- Estado 1: Si no hay URL configurada (Primera Configuración) -->
-      <div id="firstTimeSetupBox" style="display: none; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; text-align: left;">
-        <div style="display: flex; align-items: center; gap: 0.5rem; color: #15803d; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.35rem;">
-          🚀 Paso 1: Conectar Google Sheets
+      <!-- Credenciales Disponibles para Ingreso Rápido -->
+      <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 14px; padding: 0.75rem 0.95rem; margin-bottom: 1.15rem; font-size: 0.82rem; text-align: left;">
+        <div style="font-weight: 800; color: #15803d; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
+          <span>🌴</span> Acceso del Personal:
         </div>
-        <p style="font-size: 0.8rem; color: #374151; margin-bottom: 0.75rem; line-height: 1.4;">
-          Para habilitar el ingreso al sistema, pegue la URL de su Web App de Google Sheets para descargar los usuarios autorizados:
-        </p>
-        <div class="form-group" style="margin-bottom: 0.6rem;">
-          <input type="url" id="setupSheetsUrlInput" class="form-control" placeholder="https://script.google.com/macros/s/.../exec" style="font-size: 0.82rem; padding: 0.55rem 0.75rem;">
+        <div style="color: #374151; line-height: 1.5;">
+          • <strong>Mesero:</strong> <code style="background: white; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #15803d;">mesero</code> &bull; Clave: <code style="background: white; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #15803d;">123</code><br>
+          • <strong>Admin:</strong> <code style="background: white; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #0369a1;">admin</code> &bull; Clave: <code style="background: white; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #0369a1;">987654</code>
         </div>
-        <button type="button" class="btn btn-success" style="width: 100%; padding: 0.65rem; font-size: 0.88rem;" onclick="app.conectarSheetsInicial()">
-          ⚡ Conectar y Descargar Usuarios
-        </button>
-        <div id="setupSheetsMsg" style="font-size: 0.78rem; font-weight: 700; margin-top: 0.5rem; text-align: center;"></div>
       </div>
 
       <!-- Barra de Estado Conectado (Si ya hay URL configurada) -->
-      <div id="connectedSheetsBox" style="display: none; margin-bottom: 1.25rem; justify-content: space-between; align-items: center; background: #f8fafc; padding: 0.5rem 0.85rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+      <div id="connectedSheetsBox" style="display: none; margin-bottom: 1.15rem; justify-content: space-between; align-items: center; background: #f0fdf4; padding: 0.5rem 0.85rem; border-radius: 12px; border: 1px solid #86efac;">
         <span style="font-size: 0.78rem; font-weight: 700; color: #15803d; display: flex; align-items: center; gap: 0.35rem;">
           <span class="sheets-dot"></span> Sheets Conectado
         </span>
-        <div style="display: flex; gap: 0.35rem;">
-          <button type="button" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.55rem;" onclick="app.descargarDatosDesdeSheets(true)">
-            🔄 Sincronizar
-          </button>
-          <button type="button" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.55rem;" onclick="app.abrirModalSheetsConfig()">
-            ⚙️ Cambiar Link
-          </button>
-        </div>
+        <button type="button" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.55rem;" onclick="app.descargarDatosDesdeSheets(true)">
+          🔄 Sincronizar
+        </button>
       </div>
+
+      <!-- Conexión a Google Sheets (Opcional) -->
+      <details id="firstTimeSetupBox" style="margin-bottom: 1.15rem; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.65rem 0.85rem; text-align: left; font-size: 0.82rem;">
+        <summary style="font-weight: 700; color: #0369a1; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+          <span>🔗 Google Sheets (Opcional / Sincronizar)</span>
+          <span style="font-size: 0.75rem; color: #475569;">▾</span>
+        </summary>
+        <div style="margin-top: 0.65rem;">
+          <p style="font-size: 0.76rem; color: #475569; margin-bottom: 0.5rem; line-height: 1.35;">
+            Pegue la URL de su Web App de Google Sheets para sincronizar automáticamente el menú y las ventas:
+          </p>
+          <div class="form-group" style="margin-bottom: 0.5rem;">
+            <input type="url" id="setupSheetsUrlInput" class="form-control" placeholder="https://script.google.com/macros/s/.../exec" style="font-size: 0.8rem; padding: 0.5rem 0.7rem;">
+          </div>
+          <button type="button" class="btn btn-secondary" style="width: 100%; padding: 0.5rem; font-size: 0.82rem; font-weight: 700;" onclick="app.conectarSheetsInicial()">
+            ⚡ Conectar Google Sheets
+          </button>
+          <div id="setupSheetsMsg" style="font-size: 0.76rem; font-weight: 700; margin-top: 0.4rem; text-align: center;"></div>
+        </div>
+      </details>
 
       <!-- Formulario de Login -->
       <form onsubmit="event.preventDefault(); app.ejecutarLogin();">
@@ -3047,14 +3056,17 @@
             <div style="font-size: 0.8rem; color: #475569; margin-top: 2px;">Seleccione productos del menú</div>
           </div>
           
-          <div class="modal-product-search-container" style="margin-bottom: 0.65rem;">
-            <div style="position: relative;">
+          <div class="modal-product-search-container" style="margin-bottom: 0.65rem; display: flex; gap: 0.5rem; align-items: center;">
+            <div style="position: relative; flex: 1;">
               <input type="search" id="modalProductSearch" class="form-control" 
                 style="width: 100%; padding-left: 2.2rem; border-radius: 12px; font-size: 0.9rem;" 
-                placeholder="🔍 Buscar producto en menú (ej: pinto, ...)" 
+                placeholder="🔍 Buscar producto en menú (ej: pinto, smoothie, hamburguesa...)" 
                 oninput="app.buscarProductosModalDebounced(this.value)">
               <span style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: #475569; pointer-events: none;">🔍</span>
             </div>
+            <button type="button" class="btn btn-secondary" onclick="app.agregarProductoRapidoAComanda()" style="white-space: nowrap; font-size: 0.8rem; padding: 0.55rem 0.75rem; border-radius: 12px; font-weight: 700; color: #15803d; border-color: #86efac; background: #f0fdf4;" title="Agregar un producto no listado">
+              ➕ Rápido
+            </button>
           </div>
 
           <div class="categories-bar" id="categoryTabs">
@@ -3711,8 +3723,27 @@
       logoUrl: 'logo_fresh_paradise.jpg',
       googleSheetsUrl: '',
       usuarios: [
-        { nombre: 'admin', password: '987654', tipo: 'master' } // Único usuario base inicial
-      ],
+      {
+              "nombre": "admin",
+              "password": "987654",
+              "tipo": "master"
+      },
+      {
+              "nombre": "mesero",
+              "password": "123",
+              "tipo": "mesero"
+      },
+      {
+              "nombre": "Kendall",
+              "password": "123",
+              "tipo": "mesero"
+      },
+      {
+              "nombre": "Carlos",
+              "password": "123",
+              "tipo": "mesero"
+      }
+],
       mesas: [
         { id: 1, nombre: 'Mesa 1', colorHex: '#2563EB', ordenes: [], pagada: false },
         { id: 2, nombre: 'Mesa 2', colorHex: '#7C3AED', ordenes: [], pagada: false },
@@ -3721,7 +3752,164 @@
         { id: 5, nombre: 'Mesa 5', colorHex: '#6366F1', ordenes: [], pagada: false },
         { id: 6, nombre: 'Mesa 6', colorHex: '#DB2777', ordenes: [], pagada: false },
       ],
-      productos: [], // Vacío: se alimenta de la hoja Menu_Productos en Sheets
+      productos: [
+      {
+              "id": 101,
+              "nombre": "Smoothie Mango-Naranja",
+              "categoria": "Smoothies",
+              "precio": 2500
+      },
+      {
+              "id": 102,
+              "nombre": "Smoothie Piña-Coco",
+              "categoria": "Smoothies",
+              "precio": 2500
+      },
+      {
+              "id": 103,
+              "nombre": "Smoothie Pitahaya",
+              "categoria": "Smoothies",
+              "precio": 2800
+      },
+      {
+              "id": 104,
+              "nombre": "Smoothie Maracuyá",
+              "categoria": "Smoothies",
+              "precio": 2500
+      },
+      {
+              "id": 105,
+              "nombre": "Smoothie Fresa-Banano",
+              "categoria": "Smoothies",
+              "precio": 2500
+      },
+      {
+              "id": 106,
+              "nombre": "Smoothie Verde Detox",
+              "categoria": "Smoothies",
+              "precio": 2800
+      },
+      {
+              "id": 201,
+              "nombre": "Hamburguesa Especial de la Casa",
+              "categoria": "Comidas",
+              "precio": 4500
+      },
+      {
+              "id": 202,
+              "nombre": "Casado con Pollo en Salsa",
+              "categoria": "Comidas",
+              "precio": 4000
+      },
+      {
+              "id": 203,
+              "nombre": "Casado con Pescado Fresco",
+              "categoria": "Comidas",
+              "precio": 4500
+      },
+      {
+              "id": 204,
+              "nombre": "Casado Vegetariano",
+              "categoria": "Comidas",
+              "precio": 3800
+      },
+      {
+              "id": 205,
+              "nombre": "Caldosa Especial con Mariscos",
+              "categoria": "Comidas",
+              "precio": 3500
+      },
+      {
+              "id": 206,
+              "nombre": "Caldosa Tradicional Pica Ricas",
+              "categoria": "Comidas",
+              "precio": 2500
+      },
+      {
+              "id": 207,
+              "nombre": "Tacos Caribeños (3 uds)",
+              "categoria": "Comidas",
+              "precio": 4200
+      },
+      {
+              "id": 208,
+              "nombre": "Bowl Tropical de Pollo",
+              "categoria": "Comidas",
+              "precio": 4600
+      },
+      {
+              "id": 301,
+              "nombre": "Papas Fritas Rústicas",
+              "categoria": "Snacks",
+              "precio": 2200
+      },
+      {
+              "id": 302,
+              "nombre": "Nachos con Queso y Guacamole",
+              "categoria": "Snacks",
+              "precio": 3600
+      },
+      {
+              "id": 303,
+              "nombre": "Dedos de Queso",
+              "categoria": "Snacks",
+              "precio": 3200
+      },
+      {
+              "id": 304,
+              "nombre": "Patacones con Frijol y Guacamole",
+              "categoria": "Snacks",
+              "precio": 3000
+      },
+      {
+              "id": 401,
+              "nombre": "Agua Embotellada 600ml",
+              "categoria": "Bebidas",
+              "precio": 1000
+      },
+      {
+              "id": 402,
+              "nombre": "Gaseosa / Refresco",
+              "categoria": "Bebidas",
+              "precio": 1300
+      },
+      {
+              "id": 403,
+              "nombre": "Té Frío Artesanal de la Casa",
+              "categoria": "Bebidas",
+              "precio": 1500
+      },
+      {
+              "id": 404,
+              "nombre": "Café Chorreado Tradicional",
+              "categoria": "Bebidas",
+              "precio": 1200
+      },
+      {
+              "id": 405,
+              "nombre": "Cerveza Imperial / Pilsen",
+              "categoria": "Bebidas",
+              "precio": 1800
+      },
+      {
+              "id": 406,
+              "nombre": "Cerveza Corona / Heineken",
+              "categoria": "Bebidas",
+              "precio": 2300
+      },
+      {
+              "id": 501,
+              "nombre": "Pie de Limón Caribeño",
+              "categoria": "Postres",
+              "precio": 2200
+      },
+      {
+              "id": 502,
+              "nombre": "Brownie con Helado de Vainilla",
+              "categoria": "Postres",
+              "precio": 2600
+      }
+],
       ventasHistorial: [],
       clientesCredito: [],
       cuentasPorCobrar: [],
@@ -3860,20 +4048,32 @@
               this.data.mesas = [...defaultSalon, ...this.data.mesas];
             }
 
-            // Normalizar usuarios y asegurar que exista un admin máster
-            if (!this.data.usuarios || this.data.usuarios.length === 0) {
-              this.data.usuarios = [{ nombre: 'admin', password: '987654', tipo: 'master' }];
+            // Normalizar usuarios y asegurar que existan los usuarios base
+            if (!this.data.usuarios || !Array.isArray(this.data.usuarios) || this.data.usuarios.length === 0) {
+              this.data.usuarios = JSON.parse(JSON.stringify(CLEAN_EMPTY_DATA.usuarios));
             } else {
               this.data.usuarios.forEach(u => {
                 if (u.tipo) u.tipo = u.tipo.toString().trim().toLowerCase();
               });
-              const admin = this.data.usuarios.find(u => u.nombre.toLowerCase() === 'admin');
-              if (!admin) {
-                this.data.usuarios.push({ nombre: 'admin', password: '987654', tipo: 'master' });
-              } else {
-                // No se sobrescribe la contraseña existente: evita el reseteo forzado en cada carga.
-                admin.tipo = 'master';
-              }
+              const baseUsers = [
+                { nombre: 'admin', password: '987654', tipo: 'master' },
+                { nombre: 'mesero', password: '123', tipo: 'mesero' },
+                { nombre: 'Kendall', password: '123', tipo: 'mesero' },
+                { nombre: 'Carlos', password: '123', tipo: 'mesero' }
+              ];
+              baseUsers.forEach(bu => {
+                const found = this.data.usuarios.find(u => u.nombre.toLowerCase() === bu.nombre.toLowerCase());
+                if (!found) {
+                  this.data.usuarios.push(bu);
+                } else if (bu.nombre === 'admin') {
+                  found.tipo = 'master';
+                }
+              });
+            }
+
+            // Asegurar menú base si aún no se han descargado productos
+            if (!this.data.productos || !Array.isArray(this.data.productos) || this.data.productos.length === 0) {
+              this.data.productos = JSON.parse(JSON.stringify(CLEAN_EMPTY_DATA.productos));
             }
 
             if (!this.data.productos) {
@@ -4496,25 +4696,17 @@
       }
 
       ejecutarLogin() {
-        const userInput = document.getElementById('loginUsuarioInput').value.trim();
-        const passInput = document.getElementById('loginPasswordInput').value.trim();
+        const userInput = (document.getElementById('loginUsuarioInput').value || '').trim();
+        const passInput = (document.getElementById('loginPasswordInput').value || '').trim();
         const errDiv = document.getElementById('loginErrorMsg');
 
-        // Validar si aún no ha configurado el enlace en la primera vez
-        const urlConfigurada = Boolean(this.data.googleSheetsUrl && this.data.googleSheetsUrl.length > 10);
-        if (!urlConfigurada) {
-          errDiv.innerText = '⚠️ Debe conectar primero su Google Sheet en el Paso 1 para validar los usuarios.';
-          errDiv.style.display = 'block';
-          return;
-        }
-
-        // Buscar en la lista de usuarios cargada desde Sheets (o admin 987654)
-        const user = this.data.usuarios.find(u => 
-          u.nombre.toLowerCase() === userInput.toLowerCase() && u.password === passInput
+        // Buscar en la lista de usuarios (Sheets o usuarios base locales)
+        const user = (this.data.usuarios || []).find(u => 
+          u.nombre.toLowerCase() === userInput.toLowerCase() && String(u.password) === passInput
         );
 
         if (!user) {
-          errDiv.innerText = '❌ Usuario o contraseña incorrectos. Verifique sus datos o presione "Sincronizar de Sheets".';
+          errDiv.innerText = '❌ Usuario o contraseña incorrectos. Pruebe con mesero (clave: 123) o admin (clave: 987654).';
           errDiv.style.display = 'block';
           return;
         }
@@ -4528,7 +4720,9 @@
         };
 
         sessionStorage.setItem('jiqui_active_user', JSON.stringify(this.data.usuarioActivo));
-        document.getElementById('loginScreenOverlay').style.display = 'none';
+        const overlay = document.getElementById('loginScreenOverlay');
+        if (overlay) overlay.style.display = 'none';
+        
         this.renderAll();
         this.verificarYMostrarAlertasPreparadas();
       }
@@ -4604,7 +4798,7 @@
         if (!this.data.usuarioActivo) return;
         const rol = (this.data.usuarioActivo.tipo || this.data.usuarioActivo.rol || 'mesero').toString().trim().toLowerCase();
 
-        if (rol === 'mesero' && tabId !== 'mesero') {
+        if (rol === 'mesero' && tabId !== 'mesero' && tabId !== 'cocina') {
           tabId = 'mesero';
         } else if (rol === 'cocina' && tabId !== 'cocina') {
           tabId = 'cocina';
@@ -6995,6 +7189,33 @@
                         (prodNombre && itemNombre && prodNombre === itemNombre);
           return match ? total + (Number(item.cant) || 1) : total;
         }, 0);
+      }
+
+      agregarProductoRapidoAComanda() {
+        const nombre = prompt('Nombre del platillo o bebida rápida:');
+        if (!nombre || !nombre.trim()) return;
+        const precioStr = prompt(`Precio en Colones (₡) para "${nombre.trim()}":`, '2500');
+        if (precioStr === null) return;
+        const precio = parseFloat(precioStr) || 0;
+        const categoria = (this.activeCategory && this.activeCategory !== 'Todos') ? this.activeCategory : 'Comidas';
+        
+        const nuevoProd = {
+          id: 'quick_' + Date.now(),
+          nombre: nombre.trim(),
+          categoria: categoria,
+          precio: precio
+        };
+
+        // Registrar en productos locales si no existe
+        const existe = (this.data.productos || []).find(p => p.nombre.toLowerCase() === nuevoProd.nombre.toLowerCase());
+        if (!existe) {
+          this.data.productos.push(nuevoProd);
+          this.saveData();
+        }
+
+        this.addToCart(nuevoProd);
+        this.renderCategoryTabs();
+        this.refrescarVistaProductos();
       }
 
       buscarProductosModalDebounced(query) {
